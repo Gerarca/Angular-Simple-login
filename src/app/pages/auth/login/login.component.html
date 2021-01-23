@@ -1,0 +1,76 @@
+<div class="login-form">
+  <div class="login-form-content">
+    <div class="flex">
+      <div class="flex-1">  
+        
+        <div class="flex-1-2"> <span><img src="assets/logo-min.png"></span> <p>Clic here to switch to previous ARC version</p> </div> 
+      </div>  
+      <div class="flex-2"> 
+        <div class="flex-2-1"> 
+          <img src="assets/log-left.png" alt="Logo">
+        </div>
+        <div class="flex-2-2">
+          <mat-card>
+            <mat-card-content>
+              <h5>SIGN IN</h5>
+              <h3>Welcome</h3>
+              <form [formGroup]="loginForm.baseForm" (ngSubmit)="onLogin()">
+                <mat-form-field class="full-width-input">
+                  <input
+                    text="text"
+                    formControlName="username"
+                    matInput
+                    placeholder="User"
+                    required
+                  />
+                  <mat-error *ngIf="checkField('username')">
+                    {{ loginForm.errorMessage }}
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input separator">
+                  <input
+                    [type]="hide ? 'password' : 'text'"
+                    formControlName="password"
+                    matInput
+                    placeholder="Password"
+                    required
+                  />          
+                  <button mat-icon-button matSuffix (click)="hide = !hide">
+                    <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="checkField('password')">
+                    {{ loginForm.errorMessage }}
+                  </mat-error>
+                </mat-form-field>
+                <div class="login-check">
+                  <p>
+                    Remember Me 
+                    <input type="checkbox"
+                      ng-model="checkboxModel.value2"
+                      ng-true-value="'YES'" 
+                      ng-false-value="'NO'"
+                    /> 
+                  </p>
+                  <a href="#">Forgot Password?</a>            
+                </div>
+                <div class="login-privacy-check">
+                  <p>By Pressing "Sign In" you agree to the <a href="#"> Privacy Policy </a> </p>
+                </div>
+                <div class="btn-submit">
+                  <button
+                    [disabled]="loginForm.baseForm.invalid"
+                    type="submit"
+                    mat-raised-button
+                    color="primary"
+                  > Sign In        
+                  </button>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>        
+        </div>        
+      </div>
+    </div>
+    <div class="sign-up"> <p> Don't have an account? <a href=""> SIGN UP </a> </p> </div>    
+  </div>
+</div>
